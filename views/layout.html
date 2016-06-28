@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <title>TripPlanner</title>
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/stylesheets/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Baumans" rel="stylesheet">
+  </head>
+  <body>
+    <div style="height:100%; width:100%;">
+     <div id="map-canvas"></div>
+   </div>
+    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="container">
+        <a class="navbar-brand" href="#">Journey Genie</a>
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-items">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div id="nav-items" class="collapse navbar-collapse">
+          <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              Activity
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              {% for activity in activities %}
+              <li id="{{activity.name}}" class= "dropdown-for-nav"><a href="#">{{activity.name}}</a></li>
+                  {% endfor %}
+            </ul>
+          </div>
+          <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              Restaurants
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              {% for restaurant in restaurants %}
+              <li id="{{restaurant.name}}" class= "dropdown-for-nav"><a href="#">{{restaurant.name}}</a></li>
+                  {% endfor %}
+            </ul>
+          </div>
+          <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              Hotels
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              {% for hotel in hotels %}
+              <li id="{{hotel.name}}" class= "dropdown-for-nav"><a href="#">{{hotel.name}}</a></li>
+                  {% endfor %}
+            </ul>
+          </div>
+          <span id="day-choice">
+            <span class="day-text">Day: </span>
+            <span class="badge">1</span>
+            <span class="badge">2</span>
+            <span class="badge active">3</span>
+            <span class="badge">4</span>
+            <span class="badge">5</span>
+            <span class="badge">6</span>
+            <span class="badge">7</span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="container content">
+      {% block content %}{% endblock %}
+    </div>
+    <hr/>
+    <div id="footer" class="col-lg-12 col-md-12">
+      <div class="row">
+        <div id="hotel-bottom" class="col-md-4 col-lg-4  col-sm-12 bottom-content">
+            <h2>Hotel</h2>
+            <ul>
+              <li><p><span class="glyphicon glyphicon-remove"></span> Coolest Hotel Ever</p></li>
+            </ul>
+        </div>
+        <div id="restaurants-bottom" class="col-md-4 col-lg-4 col-sm-12 bottom-content">
+          <h2>Restaurants</h2>
+          <ul>
+            <li><p><span class="glyphicon glyphicon-remove"></span> Chipotle</p></li>
+            <li><p><span class="glyphicon glyphicon-remove"></span> Vanessa's Dumpling House</p></li>
+            <li><p><span class="glyphicon glyphicon-remove"></span> Halal Truck</p></li>
+        </ul>
+        </div>
+        <div id="activities-bottom" class="col-md-4 col-lg-4 col-sm-12 bottom-content">
+          <h2>Activities</h2>
+          <ul>
+            <li><p><span class="glyphicon glyphicon-remove"></span> Walk Central Park</p></li>
+            <li><p><span class="glyphicon glyphicon-remove"></span> Tenement Museum</p></li>
+            <li><p><span class="glyphicon glyphicon-remove"></span> Go to Smorgasburg</p></li>
+            <li><p><span class="glyphicon glyphicon-remove"></span> Get This Thing To Work</p></li>
+        </ul>
+        </div>
+      </div>
+    </div>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2UkKUw8HN7CUEJLPdwYhtXi6CFTKKO6w&sensor=true"></script>
+  <script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+  <script src="/javascripts/frontEnd.js"></script>
+  <script src="/bootstrap/js/bootstrap.min.js"></script>
+  </body>
+</html>
