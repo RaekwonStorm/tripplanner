@@ -57,13 +57,8 @@
           </div>
           <span id="day-choice">
             <span class="day-text">Day: </span>
-            <span class="badge">1</span>
-            <span class="badge">2</span>
-            <span class="badge active">3</span>
-            <span class="badge">4</span>
-            <span class="badge">5</span>
-            <span class="badge">6</span>
-            <span class="badge">7</span>
+            <button class="badge active">1</button>
+            <button class="badge">+</button>
           </span>
         </div>
       </div>
@@ -78,24 +73,19 @@
         <div id="hotel-bottom" class="col-md-4 col-lg-4  col-sm-12 bottom-content">
             <h2>Hotel</h2>
             <ul>
-              <li><p><span class="glyphicon glyphicon-remove"></span> Coolest Hotel Ever</p></li>
+              <li><p><button class="glyphicon glyphicon-remove"></button> Coolest Hotel Ever</p></li>
             </ul>
         </div>
         <div id="restaurants-bottom" class="col-md-4 col-lg-4 col-sm-12 bottom-content">
           <h2>Restaurants</h2>
           <ul>
-            <li><p><span class="glyphicon glyphicon-remove"></span> Chipotle</p></li>
-            <li><p><span class="glyphicon glyphicon-remove"></span> Vanessa's Dumpling House</p></li>
-            <li><p><span class="glyphicon glyphicon-remove"></span> Halal Truck</p></li>
+            <li><p><button class="glyphicon glyphicon-remove"></button> Chipotle</p></li>
         </ul>
         </div>
         <div id="activities-bottom" class="col-md-4 col-lg-4 col-sm-12 bottom-content">
           <h2>Activities</h2>
           <ul>
-            <li><p><span class="glyphicon glyphicon-remove"></span> Walk Central Park</p></li>
-            <li><p><span class="glyphicon glyphicon-remove"></span> Tenement Museum</p></li>
-            <li><p><span class="glyphicon glyphicon-remove"></span> Go to Smorgasburg</p></li>
-            <li><p><span class="glyphicon glyphicon-remove"></span> Get This Thing To Work</p></li>
+            <li><p><button class="glyphicon glyphicon-remove"></button> Walk Central Park</p></li>
         </ul>
         </div>
       </div>
@@ -104,5 +94,13 @@
   <script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
   <script src="/javascripts/frontEnd.js"></script>
   <script src="/bootstrap/js/bootstrap.min.js"></script>
+  <script>
+    {% autoescape false %}
+    var hotels = {{ hotels | json }};
+    var restaurants = {{ restaurants | json }};
+    var activities = {{ activities | json }};
+    console.log(hotels);
+    {% endautoescape %}
+</script>
   </body>
 </html>
