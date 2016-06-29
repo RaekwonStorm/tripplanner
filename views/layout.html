@@ -52,7 +52,7 @@
           <span id="day-choice">
             <span class="day-text">Day: </span>
             <button class="badge active">1</button>
-            <button class="badge adder">+</button>
+            <button class="glyphicon glyphicon-plus adder"></button>
           </span>
         </div>
       </div>
@@ -74,7 +74,7 @@
           <h2>Restaurants</h2>
           <ul>
 
-        </ul>
+          </ul>
         </div>
         <div id="activities-bottom" class="col-md-4 col-lg-4 col-sm-12 bottom-content">
           <h2>Activities</h2>
@@ -91,10 +91,9 @@
   <script src="/bootstrap/js/bootstrap.min.js"></script>
   <script>
     {% autoescape false %}
-    var hotels = {{ hotels | json }};
-    var restaurants = {{ restaurants | json }};
-    var activities = {{ activities | json }};
-    console.log(hotels);
+    var Hotels = {{ hotels | json }};
+    var Restaurants = {{ restaurants | json }};
+    var Activities = {{ activities | json }};
     {% endautoescape %}
 </script>
   </body>

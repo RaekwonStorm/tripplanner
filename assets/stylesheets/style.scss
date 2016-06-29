@@ -84,6 +84,12 @@ ul {
 .container {
   padding: 0px;
 }
+
+.glyphicon-plus {
+  padding-left: 10px;
+  padding-top: 1px;
+  color: orange;
+}
 @media screen and (max-width: 1000px) and (max-device-width: 1000px){
   #day-choice{
     display:block;
