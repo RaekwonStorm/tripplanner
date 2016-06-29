@@ -11,6 +11,9 @@ $(document).ready(function () {
   });
 
   $('#day-choice').on('click', '.badge', function () {
+
+    console.log($(this).data());
+
     $('.badge').not(this).removeClass('active');
     $(this).toggleClass('active');
     $('.row ul li').remove();
@@ -18,7 +21,7 @@ $(document).ready(function () {
     if ($(this).data().hotel) {
       $('#hotel-bottom ul').append('<li><p><button class="glyphicon glyphicon-remove"></button>' + $(this).data().hotel.name + '</p></li>');
 
-      $('.glyphicon-remove').on('click', function () {
+      $('#hotel-bottom').on('click', '.glyphicon-remove', function () {
         $(this).parent().remove();
         $('.active').data().hotel = null;
       });
@@ -32,16 +35,20 @@ $(document).ready(function () {
 
       for (var i = 0; i < rstArr.length; i++) {
         $('#restaurants-bottom ul').append('<li><p><button class="glyphicon glyphicon-remove"></button>' + rstArr[i].name + '</p></li>');
-
-        $('.glyphicon-remove').on('click', function () {
-          $(this).parent().remove();
-          var idx2Rmv = $('.active').data().restaurants.findIndex(function (e) {
-            return e.name === $(this).parent().text();
-          });
-          $('.active').data().restaurants.splice(idx2Rmv, 1);
-        });
       }
+
+      $('#restaurants-bottom').on('click', '.glyphicon-remove', function () {
+        var self = $(this);
+        var idx2Rmv = $('.active').data().restaurants.findIndex(function (e) {
+          return e.name === self.parent().text();
+        });
+        if (idx2Rmv > -1) $('.active').data().restaurants.splice(idx2Rmv, 1);
+        else console.log('Hi mom');
+        $(this).parent().remove();
+
+      });
     }
+
 
     var actArr = $(this).data().activities;
 
@@ -52,12 +59,13 @@ $(document).ready(function () {
       }
     }
 
-    $('.glyphicon-remove').on('click', function () {
+    $('#activities-bottom').on('click', '.glyphicon-remove', function () {
       $(this).parent().remove();
       var idx2Rmv = $('.active').data().activities.findIndex(function (e) {
         return e.name === $(this).parent().text();
       });
       $('.active').data().activities.splice(idx2Rmv, 1);
+      console.log($('.active').data());
     });
 
 
@@ -90,7 +98,7 @@ $(document).ready(function () {
 
       $('.active').data().hotel = $(this).data();
 
-      $('.glyphicon-remove').on('click', function () {
+      $('#hotel-bottom').on('click', '.glyphicon-remove', function () {
         $(this).parent().remove();
         $('.active').data().hotel = null;
       });
@@ -108,7 +116,7 @@ $(document).ready(function () {
 
       $('.active').data().hotel = $(this).data();
 
-      $('.glyphicon-remove').on('click', function () {
+      $('#hotel-bottom').on('click', '.glyphicon-remove', function () {
         $(this).parent().remove();
         $('.active').data().hotel = null;
       });
@@ -135,11 +143,13 @@ $(document).ready(function () {
       $('#restaurants-bottom ul').append('<li><p><button class="glyphicon glyphicon-remove"></button>' + restaurant + '</p></li>');
 
 
-      $('.glyphicon-remove').on('click', function () {
+      $('#restaurants-bottom').on('click', '.glyphicon-remove', function () {
         $(this).parent().remove();
+        var self = $(this);
         var idx2Rmv = $('.active').data().restaurants.findIndex(function (e) {
-          return e.name === $(this).parent().text();
+          return e.name === self.parent().text();
         });
+        console.log(idx2Rmv);
         $('.active').data().restaurants.splice(idx2Rmv, 1);
       });
 
@@ -158,7 +168,7 @@ $(document).ready(function () {
 
       $('.active').data().activities.push($(this).data());
 
-      $('.glyphicon-remove').on('click', function () {
+      $('#activities-bottom').on('click', '.glyphicon-remove', function () {
         $(this).parent().remove();
         var idx2Rmv = $('.active').data().activities.findIndex(function (e) {
           return e.name === $(this).parent().text();
